@@ -11,7 +11,7 @@
                     success: function(data) {
                         itemField.append(new Option("Select Item", ""));
                         data.items.forEach(item => {
-                            itemField.append(new Option(item.name, item.id));
+                            itemField.append(new Option(item.id+'. '+item.name, item.id));
                         });
                     }
                 });
