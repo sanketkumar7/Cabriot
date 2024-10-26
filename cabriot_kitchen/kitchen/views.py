@@ -28,7 +28,7 @@ def display_main_items_view(request):
     # Compare current time with meal times
     if breakfast_lunch_start <= current_time and current_time <= breakfast_lunch_end:
         meal_status = "Breakfast/Lunch"
-    elif dinner_start <= current_time or current_time <= dinner_end:
+    elif dinner_start <= current_time and current_time <= dinner_end:
         meal_status = "Dinner"
     else:
         meal_status = "No meal time currently."
@@ -40,12 +40,13 @@ def display_main_items_view(request):
             menu_item = MenuItem.objects.get(id=item_id)
             foods[item_id] = {
                 'item':menu_item,
-                'meal':meal_status,
                 'quantity': each['quantity'],
                 'quantity_type': each['quantity_type']
             }
     context={
-        'foods':foods
+        'foods':foods,
+        'meal':meal_status,
+        'section':'MAIN',
     }
     return render(request,'kitchen/menu_items.html',context)
 def display_vegetables_view(request):
@@ -62,7 +63,7 @@ def display_vegetables_view(request):
     # Compare current time with meal times
     if breakfast_lunch_start <= current_time and current_time <= breakfast_lunch_end:
         meal_status = "Breakfast/Lunch"
-    elif dinner_start <= current_time or current_time <= dinner_end:
+    elif dinner_start <= current_time and current_time <= dinner_end:
         meal_status = "Dinner"
     else:
         meal_status = "No meal time currently."
@@ -74,12 +75,12 @@ def display_vegetables_view(request):
             menu_item = Ingredient.objects.get(id=item_id)
             foods[item_id] = {
                 'item': menu_item,
-                'meal':meal_status,
                 'quantity': each['quantity'],
                 'quantity_type': each['quantity_type']
             }
     context={
-        'foods':foods
+        'foods':foods,
+        'meal':meal_status,
     }
     return render(request,'kitchen/vegetable.html',context)
 
@@ -97,7 +98,7 @@ def display_bread_view(request):
     # Compare current time with meal times
     if breakfast_lunch_start <= current_time and current_time <= breakfast_lunch_end:
         meal_status = "Breakfast/Lunch"
-    elif dinner_start <= current_time or current_time <= dinner_end:
+    elif dinner_start <= current_time and current_time <= dinner_end:
         meal_status = "Dinner"
     else:
         meal_status = "No meal time currently."
@@ -109,12 +110,12 @@ def display_bread_view(request):
             menu_item = Bread.objects.get(id=item_id)
             foods[item_id] = {
                 'item': menu_item,
-                'section':each['section'],
-                'meal':meal_status,
                 'quantity': each['quantity'],
                 'quantity_type': each['quantity_type']
             }
     context={
-        'foods':foods
+        'foods':foods,
+        'meal':meal_status,
+
     }
     return render(request,'kitchen/bread.html',context)

@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,7 +22,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
             rel="stylesheet">
     
-        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="{%static 'css/styles.css'%}" rel="stylesheet" />
+        {%block head%}
+        {%endblock%}
         <style>
             .unit{
                 font-size: 1.3rem;
@@ -49,17 +52,7 @@
                 padding-left: 3rem;
                 margin-top: 0.5rem;
             }
-            .card-footer {
-                background-color: #FF7B7C;
-                color: white;
-                font-weight: bold;
-                border-top: 1px solid #e0e0e0;
-                border-bottom-left-radius: 8px;
-                border-bottom-right-radius: 8px;
-                text-align: right;
-                padding: 0;
-                padding-right: 4rem;
-            }
+            
     
             .vertical-line {
                 border-left: 2px solid #000;
