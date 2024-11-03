@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&d9m2nu-ze_cykn#&(zju9_&$09=$m%jbq@fa71b@@l1@n4ki2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kitchen'
+    'kitchen',
 ]
 
 MIDDLEWARE = [
@@ -131,4 +131,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_ROOT = BASE_DIR/'media'
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
