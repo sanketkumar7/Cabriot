@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&d9m2nu-ze_cykn#&(zju9_&$09=$m%jbq@fa71b@@l1@n4ki2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,7 +48,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
+
+STATIC_ROOT=BASE_DIR/'productionfiles'
+STATIC_URL='static/'
+STATICFILES_DIRS=[ BASE_DIR/'mystaticfiles']
+
 
 ROOT_URLCONF = 'cabriot_kitchen.urls'
 
