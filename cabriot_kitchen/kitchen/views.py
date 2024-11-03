@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from datetime import datetime 
-
+from babel import dates
 from django.http import JsonResponse
 from .models import MenuItem, Ingredient, Bread,DailyDisplayAssignment,MealTime
 
@@ -16,7 +16,7 @@ def get_items(request, section):
 
 def display_main_items_view(request):
     foods={}
-    current_datetime=datetime.now()
+    current_datetime=datetime.now().astimezone(dates.get_timezone('Asia/Kolkata'))
     current_time=current_datetime.time()
     date=current_datetime.date()
     instance=MealTime.objects.first()
@@ -51,7 +51,7 @@ def display_main_items_view(request):
     return render(request,'kitchen/menu_items.html',context)
 def display_vegetables_view(request):
     foods={}
-    current_datetime=datetime.now()
+    current_datetime=datetime.now().astimezone(dates.get_timezone('Asia/Kolkata'))
     current_time=current_datetime.time()
     date=current_datetime.date()
     instance=MealTime.objects.first()
@@ -86,7 +86,7 @@ def display_vegetables_view(request):
 
 def display_bread_view(request):
     foods={}
-    current_datetime=datetime.now()
+    current_datetime=datetime.now().astimezone(dates.get_timezone('Asia/Kolkata'))
     current_time=current_datetime.time()
     date=current_datetime.date()
     instance=MealTime.objects.first()
